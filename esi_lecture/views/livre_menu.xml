@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Action sur les différents modèle -->
+    <record id='action_livres' model='ir.actions.act_window'>
+        <field name="name">Livres</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">livre.livre</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id='action_auteurs' model='ir.actions.act_window'>
+        <field name="name">Auteurs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{"search_default_filter_author_with_books":1}</field>
+    </record>
+
+    <record id='action_produits' model='ir.actions.act_window'>
+        <field name="name">Produits</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{"search_default_filter_product_with_books":1}</field>
+    </record>
+
+    <!-- Titre du menu principale -->
+    <menuitem id="menu_principal" name="ESI LECTURE"/>
+
+
+    <!-- Titre des sous-menus -->
+    <menuitem id="menu_gestion_livre" name="Gestion des livres" parent="menu_principal" />
+
+    <menuitem id="menu_stock" name="Achat" parent="menu_principal" />
+
+    <menuitem id="menu_point_de_vente" name="Vente" parent="menu_principal" />
+
+
+    <!-- Titre des sous-sous-menu menant au action -->
+    <menuitem id="menu_livre" name="Livres" parent="menu_gestion_livre" action="action_livres" />
+    <menuitem id="menu_auteur" name="Auteurs" parent="menu_gestion_livre" action="action_auteurs" />
+    <menuitem id="menu_produit" name="Produits" parent="menu_gestion_livre" action="action_produits" />
+
+    <menuitem id="stock_picking_menu" name="Operations de stock" parent="menu_stock" action="stock.stock_picking_type_action"/>
+
+    <menuitem id="pos_config_menu" name="Configuration POS" parent="menu_point_de_vente" action="point_of_sale.action_pos_config_kanban"/>
+
+</odoo>

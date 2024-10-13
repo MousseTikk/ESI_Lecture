@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Auteurs Search view -->
+    <record id="view_filter_Auteurs" model="ir.ui.view">
+        <field name="name">Auteurs Filter</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="livre_id"/>
+                <filter string="Auteurs" name="filter_author_with_books" domain="[('category_id.name','=','Auteur')]"/>
+            </search>
+        </field>
+    </record>
+</odoo>

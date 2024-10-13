@@ -1,0 +1,6 @@
+"name","Cost","Sales Price","Product Type","Product/Weight","Internal Reference","Available in POS","Quantity On Hand"
+"Coffret Potter","40.0","50.0","Storable Product","0.7","Box1","True","10.0"
+"livre 1","8.9","14.9","Storable Product","0.18","2070584623","True","42.0"
+"livre 2","9.9","14.9","Storable Product","0.23","207058464X","True","100.0"
+"livre 3","9.9","14.9","Storable Product","0.23","2070584925","True","130.0"
+"livre 4","19.990000000000002","24.99","Storable Product","0.86","2221249488","True","500.0"

@@ -1,0 +1,17 @@
+{% extends "_base.html" %}
+
+{% block title %}ESI LECTURE{% endblock title %}
+
+{% block content %}
+
+{% if request.session.is_connected %}
+    <div class="p-1 m-3 bg-light">
+        <h1>Bievenue {{ request.session.username }} sur le site de gestion de livres d'ESI LECTURE</h1>
+    </div>
+    {% else %}
+    <div class="p-1 m-3 bg-light">
+        <h1>Bienvenue sur le site gestion de livres</h1>
+    </div>
+{% endif %}
+
+{% endblock content %}

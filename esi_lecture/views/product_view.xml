@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo>
+    <record model="ir.ui.view" id="product_form_view">
+        <field name="name">product.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"></field>
+        <field name="arch" type="xml">
+            <!-- Ajouter la page "Collections" après la page "General Information" et avant la page "Sales" -->
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page string="Collections" name="collections">
+                    <group name="Collection">
+                    </group>
+                    <group string="Collection Description" name="description">
+                        <field name="livre_ids" widget="many2many_tags" options="{'no_create': True}" />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- livres Search view -->
+    <record id="view_filter_Produit_livre" model="ir.ui.view">
+        <field name="name">Livres Filter</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="livre_ids"/>
+                <filter string="Livres" name="filter_product_with_books" domain="[('livre_ids', '!=', False)]"/>
+            </search>
+        </field>
+    </record>
+</odoo>

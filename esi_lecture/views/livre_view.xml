@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- livres Form view -->
+    <record id="view_form_livre" model="ir.ui.view">
+        <field name="name">livre.livre.form</field>
+        <field name="model">livre.livre</field>
+        <field name="arch" type="xml">
+            <form string="Livre">   
+                <sheet>
+                    <group name="group_top">
+                        <div class="oe_button_box">
+                                <button name="toggle_like" type="object" class="oe_stat_button" icon="fa-thumbs-up">
+                                    <field string="Likes" name="likes_count" widget="statinfo"/>
+                                </button>
+                                <field string="Has liked" name="liked" invisible="1"> </field>
+                                <div class="alert alert-info" attrs="{'invisible': [('liked', '=', False)]}">
+                                    Vous avez aimé
+                                </div>
+                        </div>
+                    </group>
+                    <group name="group_center">
+                        <group name="group_left">
+                            <field name="name" />
+                            <field name="auteur_ids" widget="many2many_tags"/>
+                            <field name="nombre_page" />
+                        </group>
+                        <group name="group_right">
+                            <field name="date_publication" />
+                            <field name="couverture_image" widget="image" class="oe_avatar"/>
+                        </group>
+                    </group>
+                    <group name="group_bottom">
+                        <field name="description" widget="html"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- livres List view -->
+    <record id="view_tree_livres" model="ir.ui.view">
+        <field name="name">Livres Tree</field>
+        <field name="model">livre.livre</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="date_publication"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Livres Search view -->
+    <record id="view_filter_livres" model="ir.ui.view">
+        <field name="name">Livres Filter</field>
+        <field name="model">livre.livre</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="auteur_ids"/>
+                <filter string="Sans Auteurs" name="filter_without_authors" domain="[('auteur_ids','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>
